@@ -1,73 +1,158 @@
-# Welcome to your Lovable project
+# Instant Sip Shop - Premium Premix Packets
 
-## Project info
+A modern e-commerce website for Anthony's Discount Store, specializing in premium premix packets like Nescafe, Nestea, Nestomalt, Milo, and more. Built with React, TypeScript, and Tailwind CSS.
 
-**URL**: https://lovable.dev/projects/bf017b2d-fd3b-4713-aac9-3a580ebf8cda
+## 🌟 Features
 
-## How can I edit this code?
+- **Product Catalog**: Showcase premium premix packets with images, pricing, and descriptions
+- **Shopping Cart**: Add products, adjust quantities, and manage your order
+- **Dark/Light Theme**: Toggle between themes with system preference detection
+- **Responsive Design**: Works beautifully on all device sizes
+- **Animated UI**: Smooth animations and transitions for enhanced user experience
+- **Order Form**: Simple checkout process with customer details collection
 
-There are several ways of editing your application.
+## 🛠️ Tech Stack
 
-**Use Lovable**
+- **Frontend**: React 18 with TypeScript
+- **Styling**: Tailwind CSS with custom design system
+- **UI Components**: shadcn/ui component library
+- **State Management**: React Context API and useReducer
+- **Routing**: React Router v6
+- **Build Tool**: Vite
+- **Icons**: Lucide React
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/bf017b2d-fd3b-4713-aac9-3a580ebf8cda) and start prompting.
+## 📦 Dependencies
 
-Changes made via Lovable will be committed automatically to this repo.
+Key dependencies include:
+- `@radix-ui/react-*` - UI primitives
+- `react-router-dom` - Routing
+- `tailwindcss` - Styling
+- `lucide-react` - Icons
+- `next-themes` - Theme management
+- `@hookform/resolvers` & `zod` - Form validation
 
-**Use your preferred IDE**
+## 🚀 Getting Started
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Prerequisites
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- Node.js (v16 or higher)
+- npm or yarn
 
-Follow these steps:
+### Installation
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd instant-sip-shop-main
+```
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+2. Install dependencies:
+```bash
+npm install
+```
 
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+3. Start the development server:
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+4. Build for production:
+```bash
+npm run build
+```
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+5. Preview the production build:
+```bash
+npm run preview
+```
 
-**Use GitHub Codespaces**
+## 📁 Project Structure
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+```
+src/
+├── components/          # React components
+│   ├── ui/             # shadcn/ui components
+│   ├── ProductCard.tsx # Product display component
+│   ├── CartDrawer.tsx  # Shopping cart drawer
+│   └── ThemeToggle.tsx # Theme switcher
+├── data/               # Static data files
+│   └── products.ts     # Product catalog
+├── hooks/              # Custom React hooks
+│   ├── useCart.tsx     # Cart state management
+│   └── useTheme.tsx    # Theme management
+├── pages/              # Page components
+│   ├── Index.tsx       # Main landing page
+│   └── NotFound.tsx    # 404 page
+├── types/              # TypeScript types
+└── App.tsx             # Main application component
+```
 
-## What technologies are used for this project?
+## 🎨 Design System
 
-This project is built with:
+The project uses a custom design system with:
+- **Primary Color**: Red (#f43f5e)
+- **Border Radius**: 0.75rem
+- **Gradients**: Custom red/black gradients
+- **Shadows**: Custom shadow definitions
+- **Dark Mode**: Full dark mode support with automatic system preference detection
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## 🛒 Shopping Experience
 
-## How can I deploy this project?
+1. Browse products on the homepage
+2. Add items to cart using the "Add to Cart" button
+3. Open the cart drawer to review items
+4. Adjust quantities or remove items
+5. Proceed to checkout with the order form
+6. Submit order with customer details
 
-Simply open [Lovable](https://lovable.dev/projects/bf017b2d-fd3b-4713-aac9-3a580ebf8cda) and click on Share -> Publish.
+## 🌙 Theme Management
 
-## Can I connect a custom domain to my Lovable project?
+The website supports three theme modes:
+- Light mode
+- Dark mode
+- System preference (default)
 
-Yes, you can!
+Users can toggle themes using the theme switcher in the header.
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## 📱 Responsive Features
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+- Mobile-first design approach
+- Responsive grid layouts
+- Touch-friendly interactions
+- Adaptive component sizing
+
+## 🎯 Key Components
+
+### ProductCard
+- Displays product information with image, name, weight, and pricing
+- Shows discount percentage when applicable
+- Add to cart functionality
+- Hover animations and 3D effects
+
+### CartDrawer
+- Slide-out cart interface
+- Item quantity adjustment
+- Real-time total calculation
+- Order form integration
+
+### ThemeToggle
+- Simple theme switching button
+- Animated sun/moon icons
+- Accessible with proper ARIA labels
+
+## 📞 Contact Information
+
+For questions or support:
+- Phone: 0769065675, 0715593003
+- Email: nescafrent@gmail.com
+- Address: 415/D, Podiveekumbura, Ragama
+- Facebook: [Anthony's Discount Store](https://www.facebook.com/share/19jQ4vV7Vx/)
+
+## 📄 License
+
+This project is proprietary to Anthony's Discount Store.
+
+## 🙏 Acknowledgments
+
+- Product images and branding are property of their respective owners
+- Built with modern web technologies for optimal performance
