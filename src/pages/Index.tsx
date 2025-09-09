@@ -1,20 +1,20 @@
 import { products } from '@/data/products';
 import { ProductCard } from '@/components/ProductCard';
 import { CartDrawer } from '@/components/CartDrawer';
-import { ThemeToggle } from '@/components/ThemeToggle';
+import Navbar from '@/components/Navbar';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { 
-  Phone, 
   Mail, 
   MapPin, 
-  Clock, 
   Truck, 
   Shield, 
   Star,
   Facebook,
-  ArrowRight
+  ArrowRight,
+  Phone,
+  Clock
 } from 'lucide-react';
 
 const Index = () => {
@@ -27,33 +27,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <header className="sticky top-0 z-40 bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/60 border-b">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <img 
-                src="/assets/logo_1.png" 
-                alt="Anthony's Discount Store" 
-                className="h-12 w-auto rounded-full"
-              />
-            </div>
-            
-            <div className="flex items-center gap-4">
-              <div className="hidden md:flex items-center gap-6 text-sm">
-                <div className="flex items-center gap-2">
-                  <Phone className="h-4 w-4 text-primary" />
-                  <span>0769065675</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Clock className="h-4 w-4 text-primary" />
-                  <span>24/7 Service</span>
-                </div>
-              </div>
-              <ThemeToggle />
-            </div>
-          </div>
-        </div>
-      </header>
+      <Navbar />
 
       <section className="relative py-20 px-4 bg-gradient-to-br from-background via-background to-muted/30 overflow-hidden">
         <div className="container mx-auto text-center relative">
