@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { Menu, ChevronDown, Phone, Search, ShoppingCart } from 'lucide-react';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { ThemeToggle } from '@/components/ThemeToggle';
 
 export const Navbar = () => {
@@ -67,26 +68,30 @@ export const Navbar = () => {
                   <Menu className="h-6 w-6" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="left" className="w-80">
+              <SheetContent side="left" className="w-80" aria-label="Mobile navigation">
                 <div className="mt-6 flex flex-col gap-2">
                   {primaryNav.map((item) => {
                     if (item.label === 'Products') {
                       return (
-                        <div key={item.label} className="border rounded-md">
-                          <div className="px-4 py-3 font-semibold">Products</div>
-                          <div className="px-2 pb-3">
-                            {productCategories.map((cat) => (
-                              <Link
-                                key={cat.slug}
-                                to={cat.href}
-                                className="block px-2 py-2 rounded hover:bg-muted"
-                                onClick={() => setOpen(false)}
-                              >
-                                {cat.name}
-                              </Link>
-                            ))}
-                          </div>
-                        </div>
+                        <Accordion type="single" collapsible className="border rounded-md" key={item.label}>
+                          <AccordionItem value="products">
+                            <AccordionTrigger className="px-4 py-3 font-semibold">
+                              Products
+                            </AccordionTrigger>
+                            <AccordionContent className="px-2 pb-3">
+                              {productCategories.map((cat) => (
+                                <Link
+                                  key={cat.slug}
+                                  to={cat.href}
+                                  className="block px-2 py-2 rounded hover:bg-muted"
+                                  onClick={() => setOpen(false)}
+                                >
+                                  {cat.name}
+                                </Link>
+                              ))}
+                            </AccordionContent>
+                          </AccordionItem>
+                        </Accordion>
                       );
                     }
 
