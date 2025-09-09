@@ -29,7 +29,7 @@ export const CartDrawer = () => {
         </Button>
       </SheetTrigger>
       
-      <SheetContent className="w-full sm:max-w-lg">
+      <SheetContent className="w-full sm:max-w-lg flex flex-col h-full">
         <SheetHeader>
           <SheetTitle className="flex items-center gap-2">
             <ShoppingCart className="h-5 w-5" />
@@ -37,7 +37,7 @@ export const CartDrawer = () => {
           </SheetTitle>
         </SheetHeader>
         
-        <div className="mt-6 flex flex-col h-full">
+        <div className="mt-6 flex flex-col flex-1 min-h-0">
           {state.items.length === 0 ? (
             <div className="flex-1 flex items-center justify-center text-center">
               <div>
@@ -47,7 +47,7 @@ export const CartDrawer = () => {
             </div>
           ) : (
             <>
-              <div className="flex-1 space-y-4 overflow-y-auto">
+              <div className="flex-1 min-h-0 space-y-4 overflow-y-auto pb-24">
                 {state.items.map((item) => (
                   <div key={item.id} className="flex items-center gap-3 p-3 border rounded-lg">
                     <img 
@@ -100,7 +100,7 @@ export const CartDrawer = () => {
                 ))}
               </div>
               
-              <div className="border-t pt-4 mt-4">
+              <div className="border-t pt-4 mt-4 bg-background flex-shrink-0">
                 <div className="flex justify-between items-center mb-4">
                   <span className="text-lg font-semibold">Total:</span>
                   <span className="text-xl font-bold text-primary">
