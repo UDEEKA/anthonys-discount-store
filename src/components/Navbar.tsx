@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { primaryNav, productCategories, WHATSAPP_LINK, TEL_LINK, MAILTO_LINK, contactInfo, utilityLinks } from '@/data/nav';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
@@ -12,6 +12,8 @@ import SearchCommand from '@/components/SearchCommand';
 export const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [productsOpen, setProductsOpen] = useState(false);
+  const menuTriggerRef = useRef<HTMLButtonElement | null>(null);
 
   // Inline WhatsApp brand icon (keeps bundle small and avoids version mismatch)
   const WhatsappIcon = (props: React.SVGProps<SVGSVGElement>) => (
@@ -22,9 +24,16 @@ export const Navbar = () => {
 
   return (
     <header className="sticky top-0 z-50 bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/60 border-b">
+      {/* Skip to content for keyboard users */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:px-3 focus:py-2 focus:rounded focus:bg-primary focus:text-primary-foreground"
+      >
+        Skip to content
+      </a>
       {/* Utility top bar */}
       <div className="hidden md:block bg-muted/40 border-b">
-        <div className="container mx-auto px-4 py-1 text-xs text-muted-foreground">
+        <div className="container mx-auto px-4 py-1 text-xs text-foreground/80">
           <div className="flex items-center justify-between gap-4">
             <div className="flex items-center gap-4">
               <a href={TEL_LINK} className="inline-flex items-center gap-1 hover:text-foreground">
@@ -60,12 +69,16 @@ export const Navbar = () => {
           </Link>
 
           {/* Center: Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-6 text-sm">
+          <nav className="hidden md:flex items-center gap-6 text-sm" role="navigation" aria-label="Primary">
             {primaryNav.map((item) => {
               if (item.label === 'Products') {
                 return (
-                  <DropdownMenu key={item.label}>
-                    <DropdownMenuTrigger className="inline-flex items-center gap-1 font-medium hover:text-primary focus:outline-none">
+                  <DropdownMenu key={item.label} open={productsOpen} onOpenChange={setProductsOpen}>
+                    <DropdownMenuTrigger
+                      className="inline-flex items-center gap-1 font-medium hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                      aria-haspopup="menu"
+                      aria-expanded={productsOpen}
+                    >
                       Products <ChevronDown className="h-4 w-4" />
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="start" className="min-w-48">
@@ -89,24 +102,24 @@ export const Navbar = () => {
 
           {/* Right: Actions */}
           <div className="flex items-center gap-2">
-            <Button variant="ghost" size="icon" asChild className="hidden md:inline-flex" title="Call us">
+            <Button variant="ghost" size="icon" asChild className="hidden md:inline-flex focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2" title="Call us" aria-label="Call us">
               <a href={TEL_LINK}>
                 <Phone className="h-5 w-5" />
               </a>
             </Button>
-            <Button variant="ghost" size="icon" className="hidden md:inline-flex" title="Search (Ctrl/⌘+K)" onClick={() => setSearchOpen(true)}>
+            <Button variant="ghost" size="icon" className="hidden md:inline-flex focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2" title="Search (Ctrl/⌘+K)" aria-label="Open search" onClick={() => setSearchOpen(true)}>
               <Search className="h-5 w-5" />
             </Button>
             <ThemeToggle />
 
             {/* Mobile menu */}
-            <Sheet open={open} onOpenChange={setOpen}>
+            <Sheet open={open} onOpenChange={(v) => { setOpen(v); if (!v) { setTimeout(() => menuTriggerRef.current?.focus(), 0); } }}>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="md:hidden" aria-label="Open menu">
+                <Button ref={menuTriggerRef} variant="ghost" size="icon" className="md:hidden" aria-label="Open menu">
                   <Menu className="h-6 w-6" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="left" className="w-80" aria-label="Mobile navigation">
+              <SheetContent side="left" className="w-80" aria-label="Mobile navigation" role="dialog">
                 <div className="mt-6 flex flex-col gap-2">
                   {primaryNav.map((item) => {
                     if (item.label === 'Products') {
